@@ -1,0 +1,19 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Google Sheets GPT",
+  "name_for_model": "google_sheets",
+  "description_for_model": "Acessa e edita planilhas do Google Sheets usando a API.",
+  "auth": {
+    "type": "oauth",
+    "client_url": "https://accounts.google.com/o/oauth2/auth",
+    "authorization_url": "https://accounts.google.com/o/oauth2/auth",
+    "token_url": "https://oauth2.googleapis.com/token",
+    "scope": "https://www.googleapis.com/auth/spreadsheets"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://your-username.github.io/openapi.yaml"
+  },
+  "contact_email": "breno@smartfit.com",
+  "legal_info_url": "https://openai.com/terms"
+}

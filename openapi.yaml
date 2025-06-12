@@ -1,0 +1,54 @@
+openapi: 3.0.1
+info:
+  title: Google Sheets GPT Plugin API
+  description: API to access Google Sheets using Google Sheets API.
+  version: '1.0.0'
+servers:
+  - url: https://brenokricheldorf.github.io/  # Replace with your backend domain if you have one
+
+paths:
+  /sheets/1HAlvnf3OBlx_5cuhgMPiBqnL1BNoSR5ssmV6sTZYFJo/values/MainPage!A1:AD2000:
+    get:
+      operationId: getSheetValues
+      summary: Get values from a Google Sheet
+      parameters:
+        - name: spreadsheetId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ID of the spreadsheet.
+        - name: range
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The A1 notation of the range to retrieve.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  values:
+                    type: array
+                    items:
+                      type: array
+                      items:
+                        type: string
+
+components:
+  securitySchemes:
+    oauth:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/spreadsheets: Full access to Google Sheets
+
+security:
+  - oauth: [https://www.googleapis.com/auth/spreadsheets]
